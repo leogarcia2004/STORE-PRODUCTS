@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <div>
-          <header className="flex flex-col justify-center md:justify-between gap-3 items-center md:flex-row flex-wrap px-20 py-12">
+      <header className="flex flex-col justify-center md:justify-between gap-3 items-center md:flex-row flex-wrap px-20 py-12">
               <span className="text-3xl font-bold">Forniture</span>
               <div className="flex md:flex-row flex-wrap justify-center gap-10 items-center">
                 <nav>
