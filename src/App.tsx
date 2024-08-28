@@ -2,8 +2,10 @@ import Footer from "./components/Footer"
 import Header from "./components/Header"
 import Products from "./components/Products"
 import ContextProducts from "../src/contexts/ContextProducts"
-
+// import { useProducts } from "./contexts/ContextProducts"
 function App() {
+
+  // const{products} = useProducts()
 
   return (
     <>
@@ -46,7 +48,7 @@ function App() {
               </div>
           </section>
 
-          <Products />
+          <Products  />
 
           <section className=" h-fit flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 px-20 pt-20 pb-28">
               <div className="flex flex-col items-center">
