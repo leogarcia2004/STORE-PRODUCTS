@@ -22,8 +22,9 @@ interface ModalContextData {
 
     const fetchProducts = async () => {
         try {
-        const response = await axios.get(apiURL);
-        setProducts(response.data);
+        const response = await fetch(apiURL)
+        const data = await response.json()
+        setProducts(data);
         console.log(products)
         } catch (error) {
         console.error('Erro ao buscar os produtos:', error);
