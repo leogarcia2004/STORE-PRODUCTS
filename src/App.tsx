@@ -1,13 +1,14 @@
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import Products from "./components/Products"
-
+import ContextProducts from "../src/contexts/ContextProducts"
 
 function App() {
 
   return (
     <>
-      <div>
+    <ContextProducts>
+    <div>
           <Header />
 
           <section  className="bg-gray-800 text-white md:px-20 pb-16">
@@ -66,6 +67,8 @@ function App() {
 
           <Footer />
       </div>
+    </ContextProducts>
+      
     </>
   )
 }
