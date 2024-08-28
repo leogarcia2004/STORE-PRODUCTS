@@ -25,7 +25,7 @@ interface ModalContextData {
         const response = await fetch(apiURL)
         const data = await response.json()
         setProducts(data);
-        console.log(products)
+        console.log()
         } catch (error) {
         console.error('Erro ao buscar os produtos:', error);
         }
