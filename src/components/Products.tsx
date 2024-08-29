@@ -1,36 +1,47 @@
+import React, { useState } from 'react';
+import { productsProps } from '../type/typeProduct';
 
-// import { productsProps } from '../type/typeProduct'
+const Products: React.FC<productsProps> = ({ products }) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 5;
 
-const Products:React.FC = () => {
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const visibleItems = products.slice(startIndex, endIndex);
 
-
+  const nextPage = () => {
+    if (endIndex >= products.length) {
+      setCurrentPage(0);
+    } else {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   return (
-    <section className=" flex flex-col items-center md:px-20 py-16">
-              <h2 className="text-center mb-16 font-semibold">NEW ARRIVALS</h2>
-
-              <div className="flex flex-col justify-center">
-                <ul className="flex gap-14">
-
-                  {/* {
-                    products.map((product) => (
-
-                      <li className="w-fit shadow-xl shadow-slate-400 h-80 p-1.5">
-                        <img className="w-60 h-3/4 "  src={product.category.image} alt="" />
-                        <div className="flex mt-3 flex-col">
-                          <span className="text-center font-semibold">{product.category.name}</span>
-                          <span className="text-center text-sm">{product.price}</span>
-                        </div>
-                    </li>
-                    ))
-                  }     */}
-
-                </ul>
+    <section className="flex flex-col items-center md:px-20 py-16">
+      <h2 className="text-center mb-16 font-semibold">NEW ARRIVALS</h2>
+      <div className="flex flex-col justify-center">
+        <ul className="flex justify-center max-w-[1000px] flex-wrap gap-14">
+          {visibleItems.map(product => (
+            <li key={product.id} className="w-fit h-96 shadow-md shadow-neutral-300 p-1.5">
+              <img className="w-60 h-3/4" src={product.category.image} alt={product.title} />
+              <div className="flex items-center mt-3 flex-col">
+                <p className="text-center w-48 font-semibold">{product.title}</p>
+                <p className="text-center text-sm">$ {product.price}</p>
               </div>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-              <button className="border-2 w-fit mt-12 border-black rounded-3xl py-2 px-8 font-semibold">View More</button>
-          </section>
-  )
-}
+      <button
+        className="border-2 w-fit mt-12 border-black rounded-3xl py-2 px-8 font-semibold"
+        onClick={nextPage}
+      >
+        View More
+      </button>
+    </section>
+  );
+};
 
-export default Products
+export default Products;
