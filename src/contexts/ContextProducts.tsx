@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import { useState, useEffect, useContext } from 'react';
 import { IProduct } from '../type/typeProduct';
+import axios from 'axios';
 interface PropsCart {
     children: React.ReactNode;
   }
@@ -9,6 +10,11 @@ interface ModalContextData {
     setCartOpen: (open: boolean) => void;
     products: IProduct[];
     fetchProducts: () => void;
+    windowSize: {
+      width: number
+    }
+    handleOpenNav: () => void;
+    openNav: boolean;
 }
   
   const ModalContext = createContext( {} as ModalContextData);
@@ -17,13 +23,33 @@ interface ModalContextData {
     
     const [cartOpen, setCartOpen] = useState(false);
     const [products, setProducts] = useState<IProduct[]>([]);
+    const [openNav, setOpenNav] = useState(false);
+    const [windowSize, setWindowSize] = useState({
+      width: window.innerWidth,
+    });
+  
+    useEffect(() => {
+      function handleResize() {
+        setWindowSize({
+          width: window.innerWidth,
+        });
+      }
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const handleOpenNav = () => {
+      setOpenNav(!openNav);
+    };
 
     const apiURL = 'https://api.escuelajs.co/api/v1/products';
 
     const fetchProducts = async () => {
         try {
-        const response = await fetch(apiURL)
-        const data = await response.json()
+        const response = await axios.get(apiURL)
+        const data = await response.data;
         setProducts(data);
         console.log(products)
         } catch (error) {
@@ -38,7 +64,7 @@ interface ModalContextData {
     return (
   
       <div>
-        <ModalContext.Provider value={{cartOpen, setCartOpen, products, fetchProducts}}>
+        <ModalContext.Provider value={{cartOpen, setCartOpen, products, fetchProducts, windowSize, handleOpenNav, openNav}}>
           {children}
         </ModalContext.Provider>
       </div>
