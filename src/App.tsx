@@ -4,12 +4,40 @@ import Header from "./components/Header";
 import Products from "./components/Products";
 import clothes from "./assets/clothes.jpg";
 import { useProducts } from "./contexts/ContextProducts";
+import { useState } from "react";
 
 
 function App() {
   const { products, windowSize } = useProducts();
 
   const sortedProducts = [...products].sort((a, b) => a.price - b.price);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const items = [
+    {
+      title: 'Acessories',
+      image: 'https://placeimg.com/640/480/any',
+    },
+    {
+      title: 'Shoes',
+      image: '',
+    },
+    {
+      title: 'Jackets',
+      image: '',
+    }
+  ];
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? items.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === items.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
   return (
     <>
@@ -40,37 +68,23 @@ function App() {
             </div>
           </div>
 
-          {
-            windowSize.width <= 650 ?
-              <>
-                <div className="flex items-center justify-center gap-5">
-                  <i className="fas fa-chevron-left cursor-pointer"></i>
-
-                  <div className="flex justify-center gap-8">
-                    <div className="w-56 h-56 flex items-center justify-center bg-zinc-400">
-                      <h2 className="font-semibold text-lg">Accessories</h2>
-                    </div>        
-                  </div>
-
-                  <i className="fas fa-chevron-right cursor-pointer"></i>
-                </div>
-              </>
-
-              :
-              <div className="flex w-full justify-center gap-8">
-                <div className="w-60 h-60 flex items-center justify-center cursor-pointer bg-zinc-400">
-                  <h2 className="font-semibold text-lg">Accessories</h2>
-                </div>
-    
-                <div className="w-60 h-60 flex items-center justify-center cursor-pointer bg-zinc-400">
-                  <h2 className="font-semibold text-lg text-center">Shoes</h2>
-                </div>
-    
-                <div className="w-60 h-60 flex items-center justify-center cursor-pointer bg-zinc-400">
-                  <h2 className="font-semibold text-lg text-center">Jackets</h2>
-                </div>
+          {windowSize.width <= 650 ? (
+          <div className="flex items-center justify-center gap-5">
+            <i className="fas fa-chevron-left cursor-pointer" onClick={handlePrev}></i>
+              <div className=" reltive w-56 h-56 flex items-center justify-center bg-zinc-400">
+                <h2 className="font-semibold text-lg">{items[currentIndex].title}</h2>
               </div>
-          }
+            <i className="fas fa-chevron-right cursor-pointer" onClick={handleNext}></i>
+          </div>
+          ) : (
+          <div className="flex w-full justify-center gap-8">
+            {items.map((item, index) => (
+              <div key={index} className=" w-60 h-60 flex items-center justify-center cursor-pointer bg-zinc-400">
+                <h2 className="font-semibold text-lg">{item.title}</h2>
+              </div>
+            ))}
+          </div>
+      )}
           
         </section>
 
