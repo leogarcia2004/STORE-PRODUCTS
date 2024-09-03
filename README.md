@@ -1,50 +1,51 @@
-# React + TypeScript + Vite
+ # Loja Brasileira 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Brazil Store é uma aplicação de e-commerce desenvolvida em React e TypeScript para o frontend. O objetivo do projeto é fornecer uma plataforma online para venda de produtos como roupas, sapatos e outros acessórios, permitindo que os usuários naveguem por produtos, adicionando, removendo e atualizando os produtos dessa plataforma .
 
-Currently, two official plugins are available:
+# Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Administração de produtos (CRUD)
+- Paginação dinâmica de produtos
+- Carrossel de imagens com suporte a telas pequenas
 
-## Expanding the ESLint configuration
+# Tecnologias Utilizadas 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Front-end:
+- React
+- TypeScript
+- Roteador React
+- Context API
+- Tailwind CSS
+- Axios
 
-- Configure the top-level `parserOptions` property like this:
+# Requisitos
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+NPM ou Fios
+
+# Passo a Passo da Instalação
+
+- Primeiro, clone o repositório do projeto para sua máquina local.
+
+``` bash
+  git clone https://github.com/leogarcia2004/STORE-PRODUCTS.git
+  cd STORE-PRODUCTS
+```
+- Instale as dependências do Node.js:
+
+``` bash
+  npm install
+```
+- Iniciar o servidor de desenvolvimento do frontend:
+  
+```bash
+  npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+# Licença 
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Este projeto está licenciado sob a licença MIT - veja o arquivo [ LICENSE ] ( https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing- a-repository ) para mais detalhes.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+# Contato
+
+- Autor: Leonardo Garcia Andrade
+- E-mail: leonardogarcia1914@hotmail.com
