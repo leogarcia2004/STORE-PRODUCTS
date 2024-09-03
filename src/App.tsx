@@ -5,10 +5,10 @@ import Products from "./components/Products";
 import clothes from "./assets/clothes.jpg";
 import { useProducts } from "./contexts/ContextProducts";
 import { useState } from "react";
-
+import ModalCRUDCreat from "./components/ModalCRUDCreat";
 
 function App() {
-  const { products, windowSize } = useProducts();
+  const { products, windowSize} = useProducts();
 
   const sortedProducts = [...products].sort((a, b) => a.price - b.price);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -42,9 +42,8 @@ function App() {
   return (
     <>
       <div>
-        <Header />
-        
-
+        <Header />   
+        <ModalCRUDCreat />
         <section className="bg-zinc-800 flex justify-center  text-white md:px-20 pb-16">
           <div className="relative flex flex-col justify-center gap-8 items-center w-11/12 md:w-full  md:h-96 ">
             <img className=" w-full h-full object-cover backdrop-blur-3xl" src={clothes} alt="" />
@@ -54,8 +53,9 @@ function App() {
             </div>
           </div>
         </section>
-                 
+       
         <Products products={sortedProducts} />
+
 
         <section className="bg-zinc-800 text-white flex flex-col gap-28 md:px-20 py-16">
           <div className="flex flex-col items-center md:flex-row md:justify-center gap-8">
@@ -84,8 +84,7 @@ function App() {
               </div>
             ))}
           </div>
-      )}
-          
+        )}
         </section>
 
         <Products products={sortedProducts} />

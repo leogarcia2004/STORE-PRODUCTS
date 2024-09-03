@@ -4,7 +4,7 @@ import ModalNavegation from "../components/ModalNavegation";
 
 const Header = () => {
 
-  const { windowSize, openNav, handleOpenNav } = useProducts();
+  const { windowSize, openNav, handleOpenNav, handleOpenModalCreate } = useProducts();
 
   return (
     <>
@@ -35,7 +35,7 @@ const Header = () => {
                         <li className="cursor-pointer">Home</li>
                         <li className="cursor-pointer">Store</li>
                         <li className="cursor-pointer">About</li>
-                        <li className="cursor-pointer">Blog</li>
+                        <li onClick={handleOpenModalCreate} className="cursor-pointer">Create</li>
                         <li className="cursor-pointer">point of sale</li>
                     </ul>
                 </nav>

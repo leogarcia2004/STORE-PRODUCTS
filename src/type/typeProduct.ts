@@ -5,13 +5,17 @@ export interface IProduct {
     title: string;
     category: ICategory;
     price: number;
-    description: Idescription;
-    images: string[];
+    description: string;
+    image: string;
 }
-  
-interface Idescription {
-    short: string;
-    long: string;
+
+export interface IProductUpdate {
+    id: number;
+    title: string;
+    category: ICategory;
+    price: number;
+    description: string;
+    images: string[];
 }
 
 interface ICategory{

@@ -12,7 +12,7 @@ const ModalNavegation = () => {
             <li className="cursor-pointer">Home</li>
             <li className="cursor-pointer">Store</li>
             <li className="cursor-pointer">About</li>
-            <li className="cursor-pointer">Blog</li>
+            <li className="cursor-pointer">Create</li>
             <li className="cursor-pointer">point of sale</li>
         </ul>
     </div>
