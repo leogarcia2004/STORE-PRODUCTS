@@ -4,7 +4,7 @@ import { useState, useEffect, FormEvent } from 'react';
 
 const ModalCRUDUpdate = () => {
 
-const { modalCRUD, handleModalCRUD, selectedProductId, updateProduct, products } = useProducts();
+const { modalCRUD, handleModalCRUD, selectedProductId, updateProduct, products, windowSize } = useProducts();
 const [title, setTitle] = useState<string>('');
 const [price, setPrice] = useState<number>(0);
 const [description, setDescription] = useState<string>('');
@@ -36,7 +36,7 @@ const [imageUrl, setImageUrl] = useState('');
     <>
         {    
             modalCRUD ?
-                <div className={`absolute z-20 ${} w-4/12 h-fit  flex flex-col items-center bg-zinc-800 text-white rounded-lg`}>
+                <div className={`absolute z-50  ${windowSize.width <= 650 ? 'w-full' : 'w-4/12 '} h-fit  flex flex-col items-center bg-zinc-800 text-white rounded-lg`}>
                     <i onClick={handleModalCRUD} className="absolute top-4 left-4 fas fa-times cursor-pointer"></i>
                     <form className="flex flex-col mt-8 mb-5">
                         <div className="flex  flex-col gap-1">

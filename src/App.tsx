@@ -8,22 +8,22 @@ import { useState } from "react";
 import ModalCRUDCreat from "./components/ModalCRUDCreat";
 
 function App() {
-  const { products, windowSize} = useProducts();
+  const { products, windowSize, modalCRUD, openModalCreate} = useProducts();
 
   const sortedProducts = [...products].sort((a, b) => a.price - b.price);
   const [currentIndex, setCurrentIndex] = useState(0);
   const items = [
     {
       title: 'Acessories',
-      image: 'https://placeimg.com/640/480/any',
+      image: 'https://i.imgur.com/ZANVnHE.jpeg',
     },
     {
       title: 'Shoes',
-      image: '',
+      image: 'https://i.imgur.com/qNOjJje.jpeg',
     },
     {
       title: 'Jackets',
-      image: '',
+      image: 'https://i.imgur.com/QkIa5tT.jpeg',
     }
   ];
 
@@ -43,8 +43,9 @@ function App() {
     <>
       <div>
         <Header />   
-        <ModalCRUDCreat />
+
         <section className="bg-zinc-800 flex justify-center  text-white md:px-20 pb-16">
+        <ModalCRUDCreat />
           <div className="relative flex flex-col justify-center gap-8 items-center w-11/12 md:w-full  md:h-96 ">
             <img className=" w-full h-full object-cover backdrop-blur-3xl" src={clothes} alt="" />
             <div className="absolute flex flex-col items-center gap-8">
@@ -56,14 +57,13 @@ function App() {
        
         <Products products={sortedProducts} />
 
-
         <section className="bg-zinc-800 text-white flex flex-col gap-28 md:px-20 py-16">
           <div className="flex flex-col items-center md:flex-row md:justify-center gap-8">
-            <div className="md:w-96 md:h-96  w-72 h-72 flex justify-center items-center cursor-pointer bg-zinc-500">
+            <div className="md:w-96 md:h-96  w-72 h-72 flex justify-center items-center cursor-pointer bg-white text-black">
               <h1 className="font-bold text-center text-4xl">Our story</h1>
             </div>
 
-            <div className="md:w-96 md:h-96 w-72 h-72 flex justify-center items-center cursor-pointer bg-zinc-500">
+            <div className="md:w-96 md:h-96 w-72 h-72 flex justify-center items-center cursor-pointer bg-black text-white">
               <h1 className="font-bold text-center text-4xl">Our Blog</h1>
             </div>
           </div>
@@ -71,16 +71,18 @@ function App() {
           {windowSize.width <= 650 ? (
           <div className="flex items-center justify-center gap-5">
             <i className="fas fa-chevron-left cursor-pointer" onClick={handlePrev}></i>
-              <div className=" reltive w-56 h-56 flex items-center justify-center bg-zinc-400">
-                <h2 className="font-semibold text-lg">{items[currentIndex].title}</h2>
+              <div className=" w-56 h-56 flex items-center justify-center bg-zinc-400">
+                <img src={items[currentIndex].image} alt="" />
+                <h2 className="absolute font-semibold text-lg text-black">{items[currentIndex].title}</h2>
               </div>
             <i className="fas fa-chevron-right cursor-pointer" onClick={handleNext}></i>
           </div>
           ) : (
           <div className="flex w-full justify-center gap-8">
             {items.map((item, index) => (
-              <div key={index} className=" w-60 h-60 flex items-center justify-center cursor-pointer bg-zinc-400">
-                <h2 className="font-semibold text-lg">{item.title}</h2>
+              <div key={index} className="w-60 h-60 flex items-center justify-center cursor-pointer bg-zinc-400">
+                <img src={item.image} alt={item.title} />
+                <h2 className="absolute font-semibold text-lg text-black">{item.title}</h2>
               </div>
             ))}
           </div>

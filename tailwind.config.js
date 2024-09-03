@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'clothes': "url('/src/assets/clothes.jpg')",
+        'acessories': "url('https://i.imgur.com/ZANVnHE.jpeg')",
       },
     },
   },

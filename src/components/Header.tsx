@@ -32,14 +32,14 @@ const Header = () => {
             <div className="flex md:flex-row flex-wrap justify-center gap-10 items-center">
                 <nav>
                     <ul className="flex md:gap-12 gap-8 font-medium md:text-base text-sm">
-                        <li className="cursor-pointer">Home</li>
-                        <li className="cursor-pointer">Store</li>
-                        <li className="cursor-pointer">About</li>
-                        <li onClick={handleOpenModalCreate} className="cursor-pointer">Create</li>
-                        <li className="cursor-pointer">point of sale</li>
+                        <li className="cursor-pointer hover:text-zinc-400">Home</li>
+                        <li className="cursor-pointer hover:text-zinc-400">Store</li>
+                        <li className="cursor-pointer hover:text-zinc-400">About</li>
+                        <li onClick={handleOpenModalCreate} className="cursor-pointer hover:text-zinc-400">Create</li>
+                        <li className="cursor-pointer hover:text-zinc-400">point of sale</li>
                     </ul>
                 </nav>
-                <i className="fas fa-shopping-cart fa-lg cursor-pointer"></i>
+                <i className="fas fa-shopping-cart fa-lg cursor-pointer hover:text-zinc-400"></i>
             </div>
           </header>
       }

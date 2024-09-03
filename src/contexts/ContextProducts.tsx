@@ -43,6 +43,7 @@ const ContextProducts: React.FC<PropsCart> = ({ children }) => {
   };
 
   const handleOpenModalCreate = () => {
+    setOpenNav(false);
     setOpenModalCreate(!openModalCreate);
   }
 
@@ -76,7 +77,7 @@ const ContextProducts: React.FC<PropsCart> = ({ children }) => {
 
   const createProduct = async (product: IProduct) => {
     try {
-      const response = await axios.post('https://api.escuelajs.co/api/v1/products', product);
+      const response = await axios.post(apiURL, product);
 
       const newProduct = response.data;
       console.log('Novo produto:', newProduct);
